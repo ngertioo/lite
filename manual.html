@@ -1,0 +1,104 @@
+<?PHP
+session_start();
+// Periksa apakah pengguna sudah login
+if (!isset($_SESSION['password'])) {
+    // Jika belum login, redirect kembali ke index.php
+    header("Location: /x/cit/");
+    exit();
+}
+
+$isi = isset($_POST['inputString']) ? $_POST['inputString'] : '';
+?>
+<html>
+
+<head>
+    <title>Manual</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js.js"></script>
+</head>
+<script> 
+    $(function(){
+    $("#includedContent").load("header.html"); 
+    });
+</script> 
+<body>
+    <div id="includedContent"></div>
+    <div class="formbold-main-wrapper">
+        <div class="login-form">
+            <form action="" method="POST" id="dataForm">
+                <div class="formbold-mb-3">
+                    <div class="formbold-input-flex">
+                        <div>
+                            <label for="message" class="formbold-form-labell">Data Number</label>
+                        </div>
+                    </div>
+                    <textarea rows="6" name="data" id="data" class="formbold-form-inputt" required="required"></textarea><br><br>
+                    <div class="formbold-mb-3">
+                        <div>
+                            <input type="text" name="a" class="formbold-form-inputt" id="a" placeholder="4d">
+                            <input type="text" name="b" class="formbold-form-inputt" id="b" placeholder="3d">
+                            <input type="text" name="c" class="formbold-form-inputt" id="c" placeholder="2d">
+                        </div>
+                    </div>
+                    <div class="formbold-input-flex">
+						<div>
+							<button type="button" class="button1" style="--c:#e6bb2e" id="kirimmanual">50an ! ! !</button>
+						</div>
+
+						<div>
+							<button type="button" class="button1" style="--c:#e6bb2e" onclick="gas400()">400an ! ! !</button>
+						</div>
+					</div><br>
+                        
+            </form>
+            <br><br>
+            <div id="respons"></div>
+        </div>
+    </div>
+<script>
+function gas400(){
+    var inputTextarea = document.getElementById('data');
+    var inputText = inputTextarea.value.trim(); // Remove leading/trailing whitespaces
+    var delimiter = ' : ';
+    var maxCombinationsPerTextarea = 400;
+
+    var outputContainer = document.getElementById('respons');
+    outputContainer.innerHTML = ''; // Clear previous output
+
+    var combinations = inputText.split(delimiter);
+
+    while (combinations.length > 0) {
+    var chunk = combinations.splice(0, maxCombinationsPerTextarea);
+    var index = outputContainer.childElementCount / 3 + 1;
+
+    var info = document.createElement('p');
+    info.innerHTML = 'Set angka ke-' + index + ' Jumlah ' + chunk.length + ' Angka';
+    outputContainer.appendChild(info);
+
+    // Add textarea output
+    var outputTextarea = document.createElement('textarea');
+    outputTextarea.value = addDelimiter(chunk.join('*'), ' : ');
+    outputTextarea.classList.add('formbold-form-inputt');
+    outputTextarea.setAttribute('rows', '6');
+    outputContainer.appendChild(outputTextarea);
+
+    // Add copy button
+    var copyButton = document.createElement('button');
+    copyButton.innerHTML = 'Copy';
+    copyButton.classList.add('copy-button');
+    // Pass the index as a parameter to the copyToClipboard function
+    copyButton.addEventListener('click', copyToClipboard.bind(null, outputTextarea, index));
+    outputContainer.appendChild(copyButton);
+
+    }
+}
+
+function addDelimiter(text, delimiter) {
+    return text.replace(new RegExp(delimiter, 'g'), delimiter + ' ');
+}
+
+function copyToClipboard(element, index) {
+    element.select();
+    document.execCommand('copy');
+}
+</script>

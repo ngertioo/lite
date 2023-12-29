@@ -1,0 +1,137 @@
+<html>
+<head>
+	<title>Generator</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="assets/js.js"></script>
+	<script> 
+		$(function(){
+		$("#includedContent").load("header.html"); 
+		});
+	</script> 
+</head>
+<body onload="startFunction()">
+	<div id="includedContent"></div>
+	<div class="formbold-main-wrapper" >
+		<div class="login-form">
+			<form action="" method="POST" id="dataForm">
+				<div class="formbold-mb-3">
+					<div>
+						<input type="text" name="D" class="formbold-form-inputt" id="num4">
+						<input type="text" name="C" class="formbold-form-inputt" id="num3">
+						<input type="text" name="B" class="formbold-form-inputt" id="num2">
+						<input type="text" name="A" class="formbold-form-inputt" id="num1">
+						<center>
+							<div class="formbold-form-wrapper">
+								<div class="checkbox-wrapper-27">
+									<label class="checkbox">
+										<input type="checkbox" value="4" id="digit4">
+										<span class="checkbox__icon"></span>
+										4
+									</label>
+									<label class="checkbox">
+										<input type="checkbox" value="3" id="digit3">
+										<span class="checkbox__icon"></span>
+										3
+									</label>
+									<label class="checkbox">
+										<input type="checkbox" value="2" id="digit2">
+										<span class="checkbox__icon"></span>
+										2
+									</label>
+									<label class="checkbox">
+										<input type="checkbox" value="44" id="bb4">
+										<span class="checkbox__icon"></span>
+										B4
+									</label>
+									<label class="checkbox">
+										<input type="checkbox" value="33" id="bb3">
+										<span class="checkbox__icon"></span>
+										B3
+									</label>
+									<label class="checkbox">
+										<input type="checkbox" value="22" id="bb2">
+										<span class="checkbox__icon"></span>
+										B2
+									</label>
+								</div>
+								<input type="button" name="tarung" class="button1" onclick="generateCombination();" value="Create Number">
+							</div>
+						</center>
+
+					</div>
+					<center>
+						<div id="showImages" style="display:none; max-width: 100%;">
+							<div>
+								<img src="assets/img.png" width="70%" alt="Image">
+								<br>
+								<br>
+							</div>
+							<div>
+								<div id="loadnumber"></div>
+								<div id="loading">
+									<div class="spinner"></div>
+								</div>
+							</div>
+						</div>
+
+					</center><br>
+
+					<div class="formbold-mb-3">
+
+						<div class="formbold-input-flex">
+							<div>
+								<label for="message" class="formbold-form-labell">Data Number</label>
+							</div>
+							<div>
+								<div class="checkbox-wrapper-27">
+									<label class="checkbox">
+										<input type="checkbox" id="removetwin" name="removetwin" class="value1" value="1" checked="checked">
+										<span class="checkbox__icon"> </span>
+										Remove Twin
+									</label>
+									<label class="checkbox">
+										<input type="checkbox" id="helper" name="showImages" class="value1" value="1">
+										<span class="checkbox__icon"> </span>
+										Helper
+									</label>
+								</div>
+							</div>
+						</div>
+						<br>
+						<textarea rows="6" name="inputString" id="inputString" class="formbold-form-inputt" required="required"></textarea>
+
+					</div>
+					<!-- <div class="formbold-input-flex">
+						<div>
+							<input type="text" name="dailyInput" class="formbold-form-inputt" id="dailyInput">
+						</div>
+
+						<div>
+							<button type="button" class="formbold-btnside" onclick="dailyCetak()">Submit</button>
+						</div>
+					</div><br> -->
+					<div class="formbold-input-flex">
+						<div>
+							<label for="email" class="formbold-form-label"> Full Number </label>
+							<button type="button" class="formbold-btnside" onclick="autoFillTextArea()">00-99</button>
+						</div>
+
+						<div>
+							<label class="formbold-form-label">Split</label>
+
+							<select class="formbold-form-inputt" name="selected_group" id="selected_group">
+								<option value="nol">No Split</option>
+								<option value="A">1 Top Left</option>
+								<option value="B">2 Top Right</option>
+								<option value="C">3 Bottom Left</option>
+								<option value="D">4 Bottom Right</option>
+							</select>
+						</div>
+					</div><br>
+					<button id="kirim" type="button" class="button1" style="--c:#a31429">Go !!!</button>
+			</form>
+			<div id="respons"></div>
+				
+		</div>
+		
+	</div>
